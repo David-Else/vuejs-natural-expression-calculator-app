@@ -1,0 +1,6 @@
+# everything in following directories
+
+node_modules/*
+.vscode/*
+
+
