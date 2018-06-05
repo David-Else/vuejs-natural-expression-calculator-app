@@ -16,16 +16,15 @@
 
         <div id="app">
 
+            <button @click="goesleft++"> + </button>
+            <button @click="goesleft--"> - </button>
+
+
             <results-box></results-box>
             <!-- <p is="results-box"></p> -->
-
+            <!-- <p>Allowed goes {{ allowedGoes}} </p> -->
+            <p>Goes left {{ goesleft }}</p>
             <h1>Tell me my 9-Energy Natural Expression!</h1>
-
-            <!-- <div v-else>
-                Hello, {{ name }}!
-                <div v-for="item of items" key="item.id">
-                    {{ item.name}}
-                </div> -->
 
             <p>1. Please select gender</p>
             <button type="button" @click="toggleGender" class="[isActive ? 'natural-expression-generator__gender-box--color-male' : 'natural-expression-generator__gender-box--color-female']"
@@ -63,7 +62,7 @@
         </div>
     </article>
     <script type="text/x-template" id="results">
-        <p>Hello hello hello {{gay}}</p>
+        <!-- <p>Hello hello hello {{gay}}</p> -->
     </script>
 
 </body>

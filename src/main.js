@@ -9,15 +9,27 @@ import {
 
 Vue.component('results-box', {
   template: '#results',
-  props: ['gay', 'isActive'],
 });
 
 // eslint-disable-next-line no-unused-vars
 const vm = new Vue({
   el: '#app',
+  beforeCreate() {
+    if (localStorage.triesLeft === undefined) {
+      localStorage.triesLeft = this.$options.allowedGoes;
+    }
+  },
   data() {
     return {
-      isActive: false,
+      get goesleft() {
+        return localStorage.getItem('triesLeft') || 0;
+      },
+      set goesleft(value) {
+        localStorage.setItem('triesLeft', value);
+      },
+      // Also, localStorage seems to convert ints to strings so I needed to run return
+      // parseInt(localStorage.getItem('userSessionIndex') || 0) for it to work.
+      // Others may or may not run into this problem
       gender: 'Male',
       dateOfBirth: null,
       naturalExpressionYearOfBirth: null,
@@ -30,6 +42,7 @@ const vm = new Vue({
       text: null,
     };
   },
+  allowedGoes: 4,
   computed: {
     year() {
       // if (!this.dateOfBirth) return null
@@ -51,6 +64,10 @@ const vm = new Vue({
       }
     },
     calculate() {
+      // localStorage.triesLeft = Number(localStorage.triesLeft) - 1;
+      localStorage.triesLeft = Number(localStorage.triesLeft) - 1;
+
+      console.log(localStorage.triesLeft);
       this.naturalExpressionYearOfBirth = this.calcNaturalExpressionYearOfBirth(
         this.year,
       );
