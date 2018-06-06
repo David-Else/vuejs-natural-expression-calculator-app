@@ -27,8 +27,7 @@
             <h1>Tell me my 9-Energy Natural Expression!</h1>
 
             <p>1. Please select gender</p>
-            <button type="button" @click="toggleGender" class="[isActive ? 'natural-expression-generator__gender-box--color-male' : 'natural-expression-generator__gender-box--color-female']"
-                class="natural-expression-generator__gender-box">{{gender}}</button>
+            <button type="button" @click="toggleGender" class="[isActive ? 'natural-expression-generator__gender-box--color-male' : 'natural-expression-generator__gender-box--color-female'] natural-expression-generator__gender-box">{{gender}}</button>
             <p>2. Please select date of birth</p>
             <input type="date" v-model="dateOfBirth" />
             <p>Year: {{year}} Month: {{month}} Day: {{day}}</p>

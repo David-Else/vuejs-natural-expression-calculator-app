@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Mocha Tests</title>
+    <link rel="stylesheet" href="node_modules/mocha/mocha.css">
+</head>
+
+<body>
+    <!-- hide the actual HTML that is needed for the tests, if any is needed -->
+    <div id="app" style="display:none;"></div>
+
+    <!-- create element for the test results and load the testing programs -->
+    <div id="mocha"></div>
+
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/chai/chai.js"></script>
+
+    <script>
+        mocha.setup('bdd')
+    </script>
+
+    <!-- bundled js to test -->
+    <!-- <script type="module" src="./src/main.js"></script> -->
+    <script type="module" src="./test/tests.js"></script>
+
+
+    <!-- the test file containing the tests -->
+
+    <script type="module">
+        mocha.setup({ globals: ['__VUE_DEVTOOLS_TOAST__'] });
+        mocha.checkLeaks();
+        mocha.run();
+    </script>
+</body>
+
+</html>
