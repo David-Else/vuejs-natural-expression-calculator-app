@@ -11,6 +11,7 @@ http://getbem.com/naming/
 */
 
 .natural-expression-generator {
+  max-width: 250px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -22,7 +23,7 @@ http://getbem.com/naming/
 }
 
 #natural-expression-generator--mask {
-  display: none;
+  display: block;
   position: absolute;
   z-index: 100;
   top: 0;
@@ -45,7 +46,6 @@ http://getbem.com/naming/
 .natural-expression-generator__gender-box {
   width: 75%;
   padding: 15px;
-  /* background-color: rgb(90, 90, 90); */
   cursor: pointer;
   user-select: none;
 }
@@ -61,10 +61,6 @@ http://getbem.com/naming/
 .natural-expression-generator input {
   margin: 10px;
   padding: 0;
-}
-
-#results p {
-  margin: 0;
 }
 
 .example {

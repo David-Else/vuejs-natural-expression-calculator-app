@@ -7,11 +7,6 @@ import {
   thirdNumberArray,
 } from './data.js';
 
-Vue.component('results-box', {
-  template: '#results',
-});
-
-// eslint-disable-next-line no-unused-vars
 export default new Vue({
   el: '#app',
   beforeCreate() {
@@ -21,15 +16,12 @@ export default new Vue({
   },
   data() {
     return {
-      get goesleft() {
-        return localStorage.getItem('triesLeft') || 0;
+      get goesLeft() {
+        return Number(localStorage.getItem('triesLeft') || 0);
       },
-      set goesleft(value) {
+      set goesLeft(value) {
         localStorage.setItem('triesLeft', value);
       },
-      // Also, localStorage seems to convert ints to strings so I needed to run return
-      // parseInt(localStorage.getItem('userSessionIndex') || 0) for it to work.
-      // Others may or may not run into this problem
       gender: 'Male',
       dateOfBirth: null,
       naturalExpressionYearOfBirth: null,
@@ -42,10 +34,9 @@ export default new Vue({
       text: null,
     };
   },
-  allowedGoes: 4,
+  allowedGoes: 44,
   computed: {
     year() {
-      // if (!this.dateOfBirth) return null
       return new Date(this.dateOfBirth).getFullYear();
     },
     month() {
@@ -64,9 +55,7 @@ export default new Vue({
       }
     },
     calculate() {
-      // localStorage.triesLeft = Number(localStorage.triesLeft) - 1;
-      localStorage.triesLeft = Number(localStorage.triesLeft) - 1;
-
+      this.goesLeft -= 1;
       this.naturalExpressionYearOfBirth = this.calcNaturalExpressionYearOfBirth(
         this.year,
       );

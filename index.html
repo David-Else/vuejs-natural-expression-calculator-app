@@ -2,67 +2,68 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="./src/main.css">
-    <script type="module" src="./src/main.js"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="./src/main.css">
+  <script type="module" src="./src/main.js"></script>
+  <title>9-Energy Natural Expression Generator</title>
 </head>
 
 <body>
-    <article class="natural-expression-generator">
+  <article class="natural-expression-generator">
 
-        <div id="app">
+    <div id="app">
 
-            <button @click="goesleft++"> + </button>
-            <button @click="goesleft--"> - </button>
-
-
-            <results-box></results-box>
-            <!-- <p is="results-box"></p> -->
-            <!-- <p>Allowed goes {{ allowedGoes}} </p> -->
-            <p>Goes left {{ goesleft }}</p>
-            <h1>Tell me my 9-Energy Natural Expression!</h1>
-
-            <p>1. Please select gender</p>
-            <button type="button" @click="toggleGender" class="[isActive ? 'natural-expression-generator__gender-box--color-male' : 'natural-expression-generator__gender-box--color-female'] natural-expression-generator__gender-box">{{gender}}</button>
-            <p>2. Please select date of birth</p>
-            <input type="date" v-model="dateOfBirth" />
-            <p>Year: {{year}} Month: {{month}} Day: {{day}}</p>
-            <button type="button" @click="calculate" class="btn btn-primary">Calculate </button>
-            <div v-if="dateOfBirth">
-                <p>Your Expression is
-                    <strong>{{typeOfExpression}}</strong>
-                </p>
-                <p>You are
-                    <strong>{{duality}}</strong>
-                </p>
-                <p>You are a
-                    <strong>{{complexity}}</strong> Expression</p>
-                <p>Your primary number is
-                    <strong>{{primaryNumber}}</strong>
-                </p>
-                <p>Your second number is
-                    <strong>{{secondNumber}}</strong>
-                </p>
-                <p>Your third number is
-                    <strong>{{thirdNumber}}</strong>
-                </p>
-                <h3>Your 9-Energy Natural Expression is:</h3>
-                <h2>
-                    <strong>{{primaryNumber}}-{{secondNumber}}-{{thirdNumber}}</strong>
-                </h2>
-                <p>
-                    <strong>{{text}}</strong>
-                </p>
-            </div>
+      <div v-if="goesLeft < 1" id="natural-expression-generator--mask">
+        <div id="natural-expression-generator--text">
+          <p>You have reached your maximum number of free tries. Please get in contact
+            for your free consultation!</p>
         </div>
-    </article>
-    <script type="text/x-template" id="results">
-        <!-- <p>Hello hello hello {{gay}}</p> -->
-    </script>
+      </div>
+
+      <h1>Tell me my 9-Energy Natural Expression!</h1>
+      <p>You have {{ goesLeft }} attempts left</p>
+      <h3>1. Please select gender</h3>
+      <button type="button" @click="toggleGender" class="natural-expression-generator__gender-box"
+        v-bind:class="{ 'natural-expression-generator__gender-box--color-male': gender == 'Male', 'natural-expression-generator__gender-box--color-female': gender == 'Female' }">{{gender}}</button>
+      <h3>2. Please select date of birth</h3>
+      <input type="date" v-model="dateOfBirth" />
+      <button v-if="dateOfBirth" type="button" @click="calculate" class="btn btn-primary">Calculate </button>
+
+      <div v-if="thirdNumber">
+        <p>Your Expression is
+          <strong>{{typeOfExpression}}</strong>
+        </p>
+        <p>You are
+          <strong>{{duality}}</strong>
+        </p>
+        <p>You are a
+          <strong>{{complexity}}</strong> Expression</p>
+        <p>Your primary number is
+          <strong>{{primaryNumber}}</strong>
+        </p>
+        <p>Your second number is
+          <strong>{{secondNumber}}</strong>
+        </p>
+        <p>Your third number is
+          <strong>{{thirdNumber}}</strong>
+        </p>
+        <h3>Your 9-Energy Natural Expression is:</h3>
+        <h2>
+          <strong>{{primaryNumber}}-{{secondNumber}}-{{thirdNumber}}</strong>
+        </h2>
+        <p>
+          <strong>{{text}}</strong>
+        </p>
+      </div>
+
+    </div>
+  </article>
+  <!-- <script type="text/x-template" id="results">
+        <p>Hello hello hello {{gay}}</p>
+    </script> -->
 
 </body>
 
