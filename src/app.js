@@ -1,4 +1,4 @@
-import Vue from '../node_modules/vue/dist/vue.esm.browser.js';
+import Vue from '../vendor/vue.esm.browser.js';
 import {
   primaryNumberMales,
   primaryNumberFemales,
