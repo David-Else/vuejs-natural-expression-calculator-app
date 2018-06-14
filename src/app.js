@@ -88,7 +88,7 @@ export default new Vue({
     findPrimaryAndType(naturalExpressionYearOfBirth, gender) {
       const includesYearOfBirth = element =>
         element.year.includes(naturalExpressionYearOfBirth);
-      return gender === 'F'
+      return gender === 'Female'
         ? {
             primaryNumber: (
               primaryNumberFemales.find(includesYearOfBirth) || {}
@@ -109,7 +109,7 @@ export default new Vue({
       const includesPrimaryNumber = element =>
         element.primary.includes(primaryNumber);
       const listOfSecondaryNumbers =
-        gender === 'F'
+        gender === 'Female'
           ? (secondNumberFemales.find(includesPrimaryNumber) || {}).secondary
           : (secondNumberMales.find(includesPrimaryNumber) || {}).secondary;
       let monthIndex = monthOfBirth - 1;
@@ -120,7 +120,7 @@ export default new Vue({
     },
     findDualityAndComplexity(primaryNumber, gender) {
       const isPrimaryNumber = element => element.number === primaryNumber;
-      return gender === 'F'
+      return gender === 'Female'
         ? {
             duality: (primaryNumberFemales.find(isPrimaryNumber) || {}).duality,
             complexity: (primaryNumberFemales.find(isPrimaryNumber) || {})
