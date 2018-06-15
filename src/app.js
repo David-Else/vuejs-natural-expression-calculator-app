@@ -29,7 +29,6 @@ export default new Vue({
       },
       gender: 'Male',
       dateOfBirth: null,
-      naturalExpressionYearOfBirth: null,
       results: {
         typeOfExpression: null,
         duality: null,
@@ -52,6 +51,13 @@ export default new Vue({
     day() {
       return new Date(this.dateOfBirth).getDate();
     },
+    naturalExpressionYearOfBirth() {
+      let NEYearOfBirth = this.year;
+      NEYearOfBirth -= 1;
+      return this.month === 0 || (this.month === 1 && this.day < 4)
+        ? NEYearOfBirth
+        : this.year;
+    },
   },
   methods: {
     toggleGender() {
@@ -63,9 +69,6 @@ export default new Vue({
     },
     calculate() {
       this.goesLeft -= 1;
-      this.naturalExpressionYearOfBirth = this.calcNaturalExpressionYearOfBirth(
-        this.year,
-      );
       Object.assign(
         this.results,
         this.findPrimaryAndType(this.naturalExpressionYearOfBirth, this.gender),
@@ -78,22 +81,11 @@ export default new Vue({
       Object.assign(
         this.results,
         this.findDualityAndComplexity(this.results.primaryNumber, this.gender),
-      );
-
-      Object.assign(
-        this.results,
         this.findThirdNumberAndText(
           this.results.secondNumber,
           this.results.primaryNumber,
         ),
       );
-    },
-    calcNaturalExpressionYearOfBirth(yearOfBirth) {
-      let NEYearOfBirth = yearOfBirth;
-      NEYearOfBirth -= 1;
-      return this.month === 0 || (this.month === 1 && this.day < 4)
-        ? NEYearOfBirth
-        : yearOfBirth;
     },
     findPrimaryAndType(naturalExpressionYearOfBirth, gender) {
       const includesYearOfBirth = element =>

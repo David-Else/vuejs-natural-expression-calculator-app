@@ -29,7 +29,7 @@
         v-bind:class="{ 'natural-expression-generator__gender-box--color-male': gender == 'Male', 'natural-expression-generator__gender-box--color-female': gender == 'Female' }">{{gender}}</button>
       <h3>2. Please select date of birth</h3>
       <input type="date" v-model="dateOfBirth" />
-      <button v-if="dateOfBirth" type="button" @click="calculate" class="btn btn-primary">Calculate </button>
+      <button v-if="dateOfBirth" type="button" @click="calculate">Calculate </button>
 
       <results v-if="results.thirdNumber" :result="results"></results>
 
@@ -37,6 +37,7 @@
   </article>
 
   <!-- Results Template for Vue. Must be a SINGLE element -->
+  <!-- @vue/component -->
   <script type="text/x-template" id="results">
   <div>
     <p>Your Expression is
