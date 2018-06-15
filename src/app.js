@@ -8,12 +8,13 @@ import {
 } from './data.js';
 
 Vue.component('results', {
-  props: ['result'],
+  props: { result: Object },
   template: '#results',
 });
 
 export default new Vue({
   el: '#app',
+  template: '#interface',
   beforeCreate() {
     if (localStorage.triesLeft === undefined) {
       localStorage.triesLeft = this.$options.allowedGoes;
