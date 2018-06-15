@@ -31,38 +31,40 @@
       <input type="date" v-model="dateOfBirth" />
       <button v-if="dateOfBirth" type="button" @click="calculate" class="btn btn-primary">Calculate </button>
 
-      <div v-if="thirdNumber">
-        <p>Your Expression is
-          <strong>{{typeOfExpression}}</strong>
-        </p>
-        <p>You are
-          <strong>{{duality}}</strong>
-        </p>
-        <p>You are a
-          <strong>{{complexity}}</strong> Expression</p>
-        <p>Your primary number is
-          <strong>{{primaryNumber}}</strong>
-        </p>
-        <p>Your second number is
-          <strong>{{secondNumber}}</strong>
-        </p>
-        <p>Your third number is
-          <strong>{{thirdNumber}}</strong>
-        </p>
-        <h3>Your 9-Energy Natural Expression is:</h3>
-        <h2>
-          <strong>{{primaryNumber}}-{{secondNumber}}-{{thirdNumber}}</strong>
-        </h2>
-        <p>
-          <strong>{{text}}</strong>
-        </p>
-      </div>
+      <results v-if="results.thirdNumber" :result="results"></results>
 
     </div>
   </article>
-  <!-- <script type="text/x-template" id="results">
-        <p>Hello hello hello {{example}}</p>
-    </script> -->
+
+  <!-- Results Template for Vue. Must be a SINGLE element -->
+  <script type="text/x-template" id="results">
+  <div>
+    <p>Your Expression is
+      <strong>{{result.typeOfExpression}}</strong>
+    </p>
+    <p>You are
+      <strong>{{result.duality}}</strong>
+    </p>
+    <p>You are a
+      <strong>{{result.complexity}}</strong> Expression</p>
+    <p>Your primary number is
+      <strong>{{result.primaryNumber}}</strong>
+    </p>
+    <p>Your second number is
+      <strong>{{result.secondNumber}}</strong>
+    </p>
+    <p>Your third number is
+      <strong>{{result.thirdNumber}}</strong>
+    </p>
+    <h3>Your 9-Energy Natural Expression is:</h3>
+    <h2>
+      <strong>{{result.primaryNumber}}-{{result.secondNumber}}-{{result.thirdNumber}}</strong>
+    </h2>
+    <p>
+      <strong>{{result.text}}</strong>
+    </p>
+  </div>
+  </script>
 
 </body>
 

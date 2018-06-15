@@ -7,6 +7,11 @@ import {
   thirdNumberArray,
 } from './data.js';
 
+Vue.component('results', {
+  props: ['result'],
+  template: '#results',
+});
+
 export default new Vue({
   el: '#app',
   beforeCreate() {
@@ -25,13 +30,15 @@ export default new Vue({
       gender: 'Male',
       dateOfBirth: null,
       naturalExpressionYearOfBirth: null,
-      primaryNumber: null,
-      typeOfExpression: null,
-      secondNumber: null,
-      duality: null,
-      complexity: null,
-      thirdNumber: null,
-      text: null,
+      results: {
+        typeOfExpression: null,
+        duality: null,
+        complexity: null,
+        primaryNumber: null,
+        secondNumber: null,
+        thirdNumber: null,
+        text: null,
+      },
     };
   },
   allowedGoes: 44,
@@ -60,22 +67,25 @@ export default new Vue({
         this.year,
       );
       Object.assign(
-        this,
+        this.results,
         this.findPrimaryAndType(this.naturalExpressionYearOfBirth, this.gender),
       );
-      this.secondNumber = this.findSecondaryNumber(
-        this.primaryNumber,
+      this.results.secondNumber = this.findSecondaryNumber(
+        this.results.primaryNumber,
         this.gender,
         this.month,
       );
       Object.assign(
-        this,
-        this.findDualityAndComplexity(this.primaryNumber, this.gender),
+        this.results,
+        this.findDualityAndComplexity(this.results.primaryNumber, this.gender),
       );
 
       Object.assign(
-        this,
-        this.findThirdNumberAndText(this.secondNumber, this.primaryNumber),
+        this.results,
+        this.findThirdNumberAndText(
+          this.results.secondNumber,
+          this.results.primaryNumber,
+        ),
       );
     },
     calcNaturalExpressionYearOfBirth(yearOfBirth) {
