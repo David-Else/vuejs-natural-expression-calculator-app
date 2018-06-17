@@ -10,7 +10,7 @@ http://getbem.com/naming/
 -----------------------------------------------------------
 */
 
-.natural-expression-generator {
+/* .natural-expression-generator {
   max-width: 250px;
   position: relative;
   display: flex;
@@ -20,7 +20,7 @@ http://getbem.com/naming/
   padding: 10px;
   background: linear-gradient(to top, #27cda5, #1b8d71);
   color: white;
-}
+} */
 
 #natural-expression-generator--mask {
   display: block;

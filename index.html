@@ -11,15 +11,15 @@
 </head>
 
 <body>
-  <article class="natural-expression-generator container mx-auto">
+  <article>
     <div id="app"></div>
   </article>
 </body>
 
 <template id="interface">
-  <div>
-    <div v-if="goesLeft < 1" id="natural-expression-generator--mask">
-      <div id="natural-expression-generator--text">
+  <div class="container max-w-xs relative flex flex-col items-center mx-auto bg-grey p-2 text-white text-center">
+    <div v-if="goesLeft < 1" class="block absolute z-50 pin bg-black opacity-75">
+      <div class="absolute text-4xl">
         <p>You have reached your maximum number of free tries. Please get in contact
           for your free consultation!</p>
       </div>
@@ -28,11 +28,10 @@
     <h1>Tell me my 9-Energy Natural Expression!</h1>
     <p>You have {{ goesLeft }} attempts left</p>
     <h3>1. Please select gender</h3>
-    <button type="button" @click="toggleGender" class="natural-expression-generator__gender-box"
-      v-bind:class="{ 'natural-expression-generator__gender-box--color-male': gender == 'Male', 'natural-expression-generator__gender-box--color-female': gender == 'Female' }">{{gender}}</button>
+    <button type="button" @click="toggleGender" class="p-4 my-2" v-bind:class="{ 'bg-blue': gender == 'Male', 'bg-pink': gender == 'Female' }">{{gender}}</button>
     <h3>2. Please select date of birth</h3>
     <input type="date" v-model="dateOfBirth" />
-    <button v-if="dateOfBirth" type="button" @click="calculate">Calculate </button>
+    <button v-if="dateOfBirth" type="button" @click="calculate" class="p-4 my-2 bg-red">Calculate </button>
 
     <results v-if="results.thirdNumber" :result="results"></results>
   </div>
