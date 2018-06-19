@@ -17,9 +17,9 @@
 </body>
 
 <template id="interface">
-  <div class="container max-w-xs relative flex flex-col items-center mx-auto bg-grey p-2 text-white text-center">
+  <div class="container leading-normal max-w-xs relative flex flex-col items-center mx-auto bg-custom-gradient p-2 text-white text-center">
     <div v-if="goesLeft < 1" class="block absolute z-50 pin bg-black opacity-75">
-      <div class="absolute text-4xl">
+      <div class="absolute text-4xl select-none">
         <p>You have reached your maximum number of free tries. Please get in contact
           for your free consultation!</p>
       </div>
@@ -27,11 +27,11 @@
 
     <h1>Tell me my 9-Energy Natural Expression!</h1>
     <p>You have {{ goesLeft }} attempts left</p>
-    <h3>1. Please select gender</h3>
-    <button type="button" @click="toggleGender" class="p-4 my-2" v-bind:class="{ 'bg-blue': gender == 'Male', 'bg-pink': gender == 'Female' }">{{gender}}</button>
-    <h3>2. Please select date of birth</h3>
-    <input type="date" v-model="dateOfBirth" />
-    <button v-if="dateOfBirth" type="button" @click="calculate" class="p-4 my-2 bg-red">Calculate </button>
+    <h2>1. Please select gender</h2>
+    <button type="button" @click="toggleGender" class="p-4 my-2 text-white" v-bind:class="{ 'bg-blue-light': gender == 'Male', 'bg-pink-light': gender == 'Female' }">{{gender}}</button>
+    <h2>2. Please select date of birth</h2>
+    <input type="date" class="m-2 p-2" v-model="dateOfBirth" />
+    <button v-if="dateOfBirth" type="button" @click="calculate" class="p-4 my-2 bg-green-dark text-white">Calculate </button>
 
     <results v-if="results.thirdNumber" :result="results"></results>
   </div>
@@ -56,12 +56,12 @@
     <p>Your third number is
       <strong>{{result.thirdNumber}}</strong>
     </p>
-    <h3>Your 9-Energy Natural Expression is:</h3>
+    <h2>Your 9-Energy Natural Expression is:</h2>
     <h2>
       <strong>{{result.primaryNumber}}-{{result.secondNumber}}-{{result.thirdNumber}}</strong>
     </h2>
     <p>
-      <strong>{{result.text}}</strong>
+      <strong>"{{result.text}}"</strong>
     </p>
   </div>
 </template>

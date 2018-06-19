@@ -62,10 +62,3 @@ http://getbem.com/naming/
   margin: 10px;
   padding: 0;
 }
-
-.example {
-  display: flex;
-  transition: all 0.5s;
-  user-select: none;
-  background: linear-gradient(to bottom, white, black);
-}
