@@ -4,4 +4,4 @@ Clone to local drive and run index.html on a dev server in a modern browser with
 
 https://caniuse.com/#feat=es6-module
 
-App is being hosted live at https://david-else.github.io/vuejs-natural-expression-calculator-app/
+Application is being hosted live at https://david-else.github.io/vuejs-natural-expression-calculator-app/
